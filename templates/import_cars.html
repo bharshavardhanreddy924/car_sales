@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Cars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Import Cars</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('import_cars') }}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload CSV File</label>
+                <input type="file" class="form-control-file" id="file" name="file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Import</button>
+        </form>
+        <div class="mt-4">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

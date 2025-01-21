@@ -1,0 +1,27 @@
+Model Name,Type of Car,Type of Fuel,Engine Type,Power / Torque,Transmission,Mileage / Range,Price of Model ($),Number of Airbags,Length (mm),Width (mm),Height (mm)
+A,Hatchback,Petrol,Inline-4,163 HP / 250 Nm,Automatic,16 km/l,33000,6,4419,1796,1440
+C,Sedan,Petrol,Inline-4,255 HP / 370 Nm,Automatic,14 km/l,43000,6,4686,1810,1442
+E,Sedan,Petrol,Inline-6,362 HP / 500 Nm,Automatic,12 km/l,54000,8,4925,1852,1468
+GLA,SUV,Petrol,Inline-4,221 HP / 350 Nm,Automatic,15 km/l,37000,6,4410,1834,1611
+GLB,SUV,Petrol,Inline-4,221 HP / 350 Nm,Automatic,14 km/l,39000,6,4634,1834,1658
+GLC,SUV,Petrol,Inline-4,255 HP / 370 Nm,Automatic,13 km/l,47000,7,4658,1890,1645
+GLE,SUV,Petrol,Inline-6,362 HP / 500 Nm,Automatic,11 km/l,57000,9,4817,1935,1772
+GLS,SUV,Petrol,V8,483 HP / 700 Nm,Automatic,8 km/l,76000,9,5207,1956,1823
+S,Sedan,Petrol,Inline-6,429 HP / 520 Nm,Automatic,10 km/l,112000,10,5280,1921,1503
+S MM,Sedan,Petrol,V8,496 HP / 700 Nm,Automatic,9 km/l,185000,10,5469,1921,1503
+GLS MM,SUV,Petrol,V8,550 HP / 730 Nm,Automatic,8 km/l,185000,10,5207,1956,1823
+C43,Sedan,Petrol,V6,402 HP / 520 Nm,Automatic,11 km/l,60000,8,4691,1810,1446
+GLE 53,SUV,Petrol,Inline-6,429 HP / 520 Nm,Automatic,9 km/l,77000,9,4941,2014,1797
+AMGGLA35,SUV,Petrol,Inline-4,302 HP / 400 Nm,Automatic,13 km/l,47000,6,4436,1849,1584
+G,SUV,Petrol,V8,416 HP / 610 Nm,Automatic,6 km/l,140000,6,4817,1935,1969
+AMG G63,SUV,Petrol,V8,577 HP / 850 Nm,Automatic,6 km/l,160000,6,4873,1984,1966
+AMG GLC43,SUV,Petrol,V6,385 HP / 520 Nm,Automatic,10 km/l,60000,8,4731,1890,1617
+AMG SL55,Convertible,Petrol,V8,469 HP / 700 Nm,Automatic,9 km/l,137000,6,4705,1915,1359
+AMG GT,Coupe,Petrol,V8,523 HP / 670 Nm,Automatic,8 km/l,145000,6,4544,1939,1287
+CLE AMG,Coupe,Petrol,Inline-6,450 HP / 580 Nm,Automatic,11 km/l,76000,8,4822,1869,1436
+EQA Suv,SUV,Electric,Electric Motor,188 HP / 375 Nm,Automatic,400 km/charge,54000,6,4463,1834,1625
+EQB Suv,SUV,Electric,Electric Motor,225 HP / 390 Nm,Automatic,419 km/charge,58000,6,4684,1834,1667
+EQE Suv,SUV,Electric,Electric Motor,288 HP / 500 Nm,Automatic,590 km/charge,70000,8,4940,1961,1689
+EQS,Sedan,Electric,Electric Motor,329 HP / 550 Nm,Automatic,620 km/charge,104000,8,5216,1926,1512
+EQS MM,Sedan,Electric,Electric Motor,649 HP / 950 Nm,Automatic,550 km/charge,185000,10,5265,1926,1515
+EQS Suv,SUV,Electric,Electric Motor,355 HP / 750 Nm,Automatic,580 km/charge,110000,8,5125,1954,1709

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Sales Dashboard</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Sales</h5>
+                        <p class="card-text">{{ total_sales }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Revenue</h5>
+                        <p class="card-text">${{ total_revenue }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Monthly Sales</h5>
+                        <p class="card-text">{{ monthly_sales }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <h3>Available Cars</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for car in available_cars %}
+                        <tr>
+                            <td>{{ car['Model Name'] }}</td>
+                            <td>${{ car['Price of Model ($)'] }}</td>
+                            <td>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#orderModal{{ car._id }}">Place Order</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="orderModal{{ car._id }}" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="orderModalLabel">Place Order for {{ car['Model Name'] }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="{{ url_for('place_order') }}">
+                                                    <input type="hidden" name="car_id" value="{{ car._id }}">
+                                                    <div class="form-group">
+                                                        <label for="customer_name">Customer Name</label>
+                                                        <input type="text" class="form-control" id="customer_name" name="customer_name" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="customer_phone">Customer Phone</label>
+                                                        <input type="text" class="form-control" id="customer_phone" name="customer_phone" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="customer_email">Customer Email</label>
+                                                        <input type="email" class="form-control" id="customer_email" name="customer_email" required>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Place Order</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-4">
+            <h3>Recent Orders</h3>
+            <ul class="list-group">
+                {% for order in recent_orders %}
+                    <li class="list-group-item">
+                        {{ order.car_model }} - ${{ order.price }} ({{ order.customer_name }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="mt-4">
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

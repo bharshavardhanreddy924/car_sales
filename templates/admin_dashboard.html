@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Admin Dashboard</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Sales</h5>
+                        <p class="card-text">{{ total_sales }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Revenue</h5>
+                        <p class="card-text">${{ total_revenue }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Monthly Sales</h5>
+                        <p class="card-text">{{ monthly_sales }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <h3>Pending Approvals</h3>
+            <ul class="list-group">
+                {% for user in staff if user.status == 'pending' %}
+                    <li class="list-group-item">
+                        {{ user.first_name }} {{ user.last_name }}
+                        <a href="{{ url_for('approve_sales_person', user_id=user._id) }}" class="btn btn-success btn-sm float-right">Approve</a>
+                        <a href="{{ url_for('reject_sales_person', user_id=user._id) }}" class="btn btn-danger btn-sm float-right mr-2">Reject</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="mt-4">
+            <h3>Pending Orders</h3>
+            <ul class="list-group">
+                {% for order in orders if order.status == 'pending' %}
+                    <li class="list-group-item">
+                        {{ order.car_model }} - ${{ order.price }} ({{ order.customer_name }})
+                        <a href="{{ url_for('update_order_status', order_id=order._id, status='approved') }}" class="btn btn-success btn-sm float-right">Approve</a>
+                        <a href="{{ url_for('update_order_status', order_id=order._id, status='rejected') }}" class="btn btn-danger btn-sm float-right mr-2">Reject</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="mt-4">
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
